@@ -16,12 +16,15 @@ const db = mysql.createConnection({
 db.connect(function (err) {
   if (err) throw err;
   console.clear();
+  console.log("");
   console.log("======================================");
   console.log("");
-  console.log("          EMPLOYEE DATABASE           ");
+  console.log("           EMPLOYEE TRACKER           ");
   console.log("");
   console.log("       Created By: csetiawan88        ");
+  console.log("");
   console.log("======================================");
+  console.log("");
   mainMenu();
 });
 
@@ -98,15 +101,19 @@ function mainMenu() {
 
         // Exit application
         case "Exit":
+          console.log("");
           console.log(
             "========================================================="
           );
+          console.log("");
           console.log(
             "Thank you for using Employee Tracker and Have a nice day."
           );
+          console.log("");
           console.log(
             "==================================================+======"
           );
+          console.log("");
           db.end();
           break;
       }
@@ -122,6 +129,8 @@ function viewAllDepts() {
       console.log("");
       console.clear();
       console.table(res);
+      console.log("        All Departments are viewed!");
+      console.log("        ---------------------------");
       mainMenu();
     }
   );
@@ -136,6 +145,8 @@ function viewAllRoles() {
       console.log("");
       console.clear();
       console.table(res);
+      console.log("           All Roles are viewed!");
+      console.log("           ---------------------");
       mainMenu();
     }
   );
@@ -161,6 +172,8 @@ function viewAllEmps() {
       console.log("");
       console.clear();
       console.table(res);
+      console.log("         All Employees are viewed!");
+      console.log("         -------------------------");
       mainMenu();
     }
   );
@@ -175,6 +188,8 @@ function viewEmpsByRole() {
       console.log("");
       console.clear();
       console.table(res);
+      console.log("      All Employees by role are viewed!");
+      console.log("      ---------------------------------");
       mainMenu();
     }
   );
@@ -189,6 +204,8 @@ function viewEmpsByDept() {
       console.log("");
       console.clear();
       console.table(res);
+      console.log(" All Employees by department are viewed!");
+      console.log(" ---------------------------------------");
       mainMenu();
     }
   );
@@ -203,6 +220,8 @@ function viewEmpsByMan() {
       console.log("");
       console.clear();
       console.table(res);
+      console.log("    All Employees by manager are viewed!");
+      console.log("    ------------------------------------");
       mainMenu();
     }
   );
@@ -215,7 +234,7 @@ function addDept() {
       {
         name: "newDept",
         type: "input",
-        message: "Please enter the name of the department you want to add.",
+        message: "Please enter the name of the department?",
         // validation for empty field
         validate(input) {
           if (input !== "") return true;
@@ -230,7 +249,7 @@ function addDept() {
       db.query(sql, params, function (err, res) {
         if (err) throw err;
         console.clear();
-        console.log("New department added!");
+        console.log("Department Inserted!");
         viewAllDepts();
         mainMenu();
       });
@@ -244,7 +263,7 @@ function addRole() {
       {
         name: "title",
         type: "input",
-        message: "Please enter the title of role you want to add.",
+        message: "Please enter the title of role?",
         // validation for empty field
         validate(input) {
           if (input !== "") return true;
@@ -254,19 +273,17 @@ function addRole() {
       {
         name: "salary",
         type: "number",
-        message:
-          "Please enter the salary associated with the role you want to add (only numbers)",
+        message: "Please enter the salary associated with the role?",
         // validation numeric field
         validate(input) {
           if (Number.parseInt(input)) return true;
-          throw Error("Pleae input a number.");
+          throw Error("Please input a number.");
         },
       },
       {
         name: "department_id",
         type: "number",
-        message:
-          "Please enter the department's id associated with the role you want to add.",
+        message: "Please enter the department's id associated with the role?",
         // validation numeric field
         validate(input) {
           if (Number.parseInt(input)) return true;
@@ -281,7 +298,7 @@ function addRole() {
       db.query(sql, params, function (err, res) {
         if (err) throw err;
         console.clear();
-        console.log("New role added!");
+        console.log("Role Inserted!");
         viewAllRoles();
         mainMenu();
       });
@@ -320,7 +337,7 @@ function addEmp() {
         // validation numeric field
         validate(input) {
           if (Number.parseInt(input)) return true;
-          throw Error("Pleae input a number.");
+          throw Error("Please input a number.");
         },
       },
     ])
@@ -331,7 +348,7 @@ function addEmp() {
       db.query(sql, params, function (err, res) {
         if (err) throw err;
         console.clear();
-        console.log("New role added!");
+        console.log("New Employee Inserted!");
         viewAllEmps();
         mainMenu();
       });
