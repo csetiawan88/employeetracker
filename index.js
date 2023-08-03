@@ -1,9 +1,9 @@
-//Dependencies
+//======== Dependencies===================//
 const inquirer = require("inquirer");
 const mysql = require("mysql2");
 const consoleTable = require("console.table");
 
-//Connect database with my credentials
+//========== Connect Database ==========================//
 const db = mysql.createConnection({
   host: "localhost",
   port: 3306,
@@ -12,26 +12,29 @@ const db = mysql.createConnection({
   database: "employeedb",
 });
 
+//========== Welcome Logo ==========================//
 db.connect(function (err) {
   if (err) throw err;
   console.clear();
   console.log("======================================");
   console.log("");
-  console.log("   WELCOME TO THE EMPLOYEE DATABASE   ");
+  console.log("          EMPLOYEE DATABASE           ");
   console.log("");
+  console.log("       Created By: csetiawan88        ");
   console.log("======================================");
   mainMenu();
 });
 
+// Main Menu
 // List of choices for user input
 
 function mainMenu() {
   inquirer
     .prompt([
       {
-        type: "list",
-        message: "What would you like to do today?",
         name: "choice",
+        type: "list",
+        message: "Please select an option:",
         choices: [
           "View All Departments",
           "View All Roles",
@@ -96,7 +99,7 @@ function mainMenu() {
         //Close application
         case "Exit":
           console.log("===============================================");
-          console.log("                 Goodbye!!  ");
+          console.log("          Thank you and Have a nice day...     ");
           console.log("===============================================");
           db.end();
           break;
