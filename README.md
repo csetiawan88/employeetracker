@@ -64,6 +64,10 @@ Video created with Screencastify.
 
 Video Link:
 
+## Screenshot
+
+![Employee Tracker](screenshot1.jpg)
+
 ## Technologies
 
 - [MySQL](https://www.mysql.com/)
