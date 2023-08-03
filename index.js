@@ -26,7 +26,7 @@ db.connect(function (err) {
 });
 
 // Main Menu
-// List of choices for user input
+// Function to display a list of prompts, user can select from them.
 
 function mainMenu() {
   inquirer
@@ -51,66 +51,72 @@ function mainMenu() {
     ])
     .then(function (result) {
       switch (result.choice) {
-        // Select view departments
+        // View departments
         case "View All Departments":
           viewAllDepts();
           break;
 
-        // Select view all roles
+        // View all roles
         case "View All Roles":
           viewAllRoles();
           break;
 
-        // Select view all employees
+        // View all employees
         case "View All Employees":
           viewAllEmps();
           break;
 
-        // Select view all employees by department
+        // View all employees by department
         case "View All Employees by Department":
           viewEmpsByDept();
           break;
 
-        // Select view all employees by role
+        // View all employees by role
         case "View All Employees by Role":
           viewEmpsByRole();
           break;
 
-        // Select view all employees by manager
+        // View all employees by manager
         case "View All Employees by Manager":
           viewEmpsByMan();
           break;
 
-        //Add a department
+        // Add a department
         case "Add Department":
           addDept();
           break;
 
-        //Add a role
+        // Add a role
         case "Add Role":
           addRole();
           break;
 
-        //Add an employee
+        // Add an employee
         case "Add Employee":
           addEmp();
           break;
 
-        //Close application
+        // Exit application
         case "Exit":
-          console.log("===============================================");
-          console.log("          Thank you and Have a nice day...     ");
-          console.log("===============================================");
+          console.log(
+            "========================================================="
+          );
+          console.log(
+            "Thank you for using Employee Tracker and Have a nice day."
+          );
+          console.log(
+            "==================================================+======"
+          );
           db.end();
           break;
       }
     });
 }
 
-//Function to view all departments
+// View all departments
 function viewAllDepts() {
   db.query(
-    "SELECT department.id AS ID, department.name AS Department FROM department",
+    "SELECT department.id AS ID, department.name AS DEPARTMENT FROM department",
     function (err, res) {
       if (err) throw err;
       console.log("");
@@ -121,10 +127,10 @@ function viewAllDepts() {
   );
 }
 
-//Function to view all roles
+// View all roles
 function viewAllRoles() {
   db.query(
-    "SELECT role.id as ID, role.title AS TITLE, department.name AS Dept, role.salary FROM role INNER JOIN department ON role.department_id = department.id ORDER BY role.id",
+    "SELECT role.id as ID, role.title AS TITLE, department.name AS DEPARTMENT, role.salary FROM role INNER JOIN department ON role.department_id = department.id ORDER BY role.id",
     function (err, res) {
       if (err) throw err;
       console.log("");
@@ -135,7 +141,7 @@ function viewAllRoles() {
   );
 }
 
-//Function to view all employees
+// View all employees
 function viewAllEmps() {
   db.query(
     `SELECT employee.id,
@@ -160,7 +166,7 @@ function viewAllEmps() {
   );
 }
 
-//Function to view all employees by role
+// View all employees by role
 function viewEmpsByRole() {
   db.query(
     "SELECT CONCAT(employee.first_name, ' ', employee.last_name) AS NAME, role.title AS TITLE FROM employee INNER JOIN role on employee.role_id = role.id ORDER BY role.title",
@@ -174,7 +180,7 @@ function viewEmpsByRole() {
   );
 }
 
-//Function to view all employees by department
+// View all employees by department
 function viewEmpsByDept() {
   db.query(
     "SELECT CONCAT(employee.first_name, ' ', employee.last_name) AS NAME, department.name AS DEPT FROM role INNER JOIN employee on employee.role_id = role.id INNER JOIN department on department.id = role.department_id ORDER BY department.name",
@@ -188,7 +194,7 @@ function viewEmpsByDept() {
   );
 }
 
-//Function to view all employees by manager
+// View all employees by manager
 function viewEmpsByMan() {
   db.query(
     "SELECT CONCAT(Emp.first_name, ' ', Emp.last_name) AS EMPLOYEE, CONCAT(Man.first_name, ' ', Man.last_name) AS MANAGER FROM Employee Emp INNER JOIN Employee Man on Emp.manager_id = Man.id ORDER BY Emp.last_name",
@@ -202,7 +208,7 @@ function viewEmpsByMan() {
   );
 }
 
-//Functin to add new department with prepared statement
+// Questions for adding department
 function addDept() {
   inquirer
     .prompt([
@@ -210,6 +216,11 @@ function addDept() {
         name: "newDept",
         type: "input",
         message: "Please enter the name of the department you want to add.",
+        // validation for empty field
+        validate(input) {
+          if (input !== "") return true;
+          throw Error("The field cannot be empty.");
+        },
       },
     ])
     .then((answer) => {
@@ -226,7 +237,7 @@ function addDept() {
     });
 }
 
-//Function to add new role with prepared statement
+// Questions for adding role
 function addRole() {
   inquirer
     .prompt([
@@ -234,18 +245,33 @@ function addRole() {
         name: "title",
         type: "input",
         message: "Please enter the title of role you want to add.",
+        // validation for empty field
+        validate(input) {
+          if (input !== "") return true;
+          throw Error("The field cannot be empty.");
+        },
       },
       {
         name: "salary",
         type: "number",
         message:
           "Please enter the salary associated with the role you want to add (only numbers)",
+        // validation numeric field
+        validate(input) {
+          if (Number.parseInt(input)) return true;
+          throw Error("Pleae input a number.");
+        },
       },
       {
         name: "department_id",
         type: "number",
         message:
           "Please enter the department's id associated with the role you want to add.",
+        // validation numeric field
+        validate(input) {
+          if (Number.parseInt(input)) return true;
+          throw Error("Pleae input a number.");
+        },
       },
     ])
     .then((answer) => {
@@ -262,7 +288,7 @@ function addRole() {
     });
 }
 
-//Function to add new employee with prepared statement
+// Questions for adding employee
 function addEmp() {
   inquirer
     .prompt([
@@ -270,17 +296,32 @@ function addEmp() {
         name: "first_name",
         type: "input",
         message: "Please enter the first name of employee you want to add.",
+        // validation for validation empty field
+        validate(input) {
+          if (input !== "") return true;
+          throw Error("The field cannot be empty.");
+        },
       },
       {
         name: "last_name",
         type: "input",
         message: "Please enter the last name of employee you want to add.",
+        // validation for validation empty field
+        validate(input) {
+          if (input !== "") return true;
+          throw Error("The field cannot be empty.");
+        },
       },
       {
         name: "role_id",
         type: "number",
         message:
           "Please enter the role id associated with the employee you want to add (only numbers).",
+        // validation numeric field
+        validate(input) {
+          if (Number.parseInt(input)) return true;
+          throw Error("Pleae input a number.");
+        },
       },
     ])
     .then((answer) => {
