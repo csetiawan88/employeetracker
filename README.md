@@ -31,6 +31,9 @@ Developers frequently have to create interfaces that allow non-developers to eas
 - THEN I am prompted to enter the employee’s first name, last name, role, and manager, and that employee is added to the database
 - WHEN I choose to update an employee role
 - THEN I am prompted to select an employee to update and their new role and this information is updated in the database
+- Uses the Inquirer packageLinks to an external site..
+- Uses the MySQL2 packageLinks to an external site. to connect to a MySQL database.
+- Follows the table schema outlined in the homework instructions.
 
 ## Installation
 
@@ -69,6 +72,8 @@ Video Link:
 ## Screenshot
 
 ![Employee Tracker](screenshot1.jpg)
+![Employee Tracker](screenshot2.jpg)
+![Employee Tracker](screenshot3.jpg)
 
 ## Technologies
 
@@ -85,4 +90,4 @@ csetiawan@yahoo.com
 
 ## Github
 
-https://github.com/csetiawan88/employeetracker
+GITHUB: https://github.com/csetiawan88/employeetracker

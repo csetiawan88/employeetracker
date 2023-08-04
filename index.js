@@ -48,7 +48,7 @@ function mainMenu() {
           "Add Department",
           "Add Role",
           "Add Employee",
-          "Exit",
+          "Exit Menu",
         ],
       },
     ])
@@ -100,7 +100,7 @@ function mainMenu() {
           break;
 
         // Exit application
-        case "Exit":
+        case "Exit Menu":
           console.log("");
           console.log(
             "========================================================="
@@ -123,6 +123,7 @@ function mainMenu() {
 // View all departments
 function viewAllDepts() {
   db.query(
+    // "SELECT * FROM department",
     "SELECT department.id AS ID, department.name AS DEPARTMENT FROM department",
     function (err, res) {
       if (err) throw err;
@@ -139,6 +140,7 @@ function viewAllDepts() {
 // View all roles
 function viewAllRoles() {
   db.query(
+    // "SELECT * FROM role",
     "SELECT role.id as ID, role.title AS TITLE, department.name AS DEPARTMENT, role.salary FROM role INNER JOIN department ON role.department_id = department.id ORDER BY role.id",
     function (err, res) {
       if (err) throw err;
@@ -155,6 +157,7 @@ function viewAllRoles() {
 // View all employees
 function viewAllEmps() {
   db.query(
+    // "SELECT * FROM employee",
     `SELECT employee.id,
     employee.first_name,
     employee.last_name,
@@ -282,12 +285,13 @@ function addRole() {
       },
       {
         name: "department_id",
-        type: "number",
+        type: "list",
         message: "Please enter the department's id associated with the role?",
+        choices: [1, 2, 3, 4, 5, 6, 7, 8, 9],
         // validation numeric field
         validate(input) {
           if (Number.parseInt(input)) return true;
-          throw Error("Pleae input a number.");
+          throw Error("Please input a number.");
         },
       },
     ])
@@ -312,7 +316,7 @@ function addEmp() {
       {
         name: "first_name",
         type: "input",
-        message: "Please enter the first name of employee you want to add.",
+        message: "Please enter the first name of employee?",
         // validation for validation empty field
         validate(input) {
           if (input !== "") return true;
@@ -322,7 +326,7 @@ function addEmp() {
       {
         name: "last_name",
         type: "input",
-        message: "Please enter the last name of employee you want to add.",
+        message: "Please enter the last name of employee?",
         // validation for validation empty field
         validate(input) {
           if (input !== "") return true;
@@ -331,9 +335,9 @@ function addEmp() {
       },
       {
         name: "role_id",
-        type: "number",
-        message:
-          "Please enter the role id associated with the employee you want to add (only numbers).",
+        type: "list",
+        message: "Please enter the role id associated with the employee?",
+        choices: [1, 2, 3, 4, 5, 6, 7, 8, 9],
         // validation numeric field
         validate(input) {
           if (Number.parseInt(input)) return true;

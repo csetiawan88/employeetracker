@@ -13,7 +13,7 @@ INSERT INTO role (title, salary, department_id) VALUES
 ("Sales Manager", 130000, 2),
 ("External Op Manager", 110000, 3),
 ("Internal Op Manager", 110000, 3),
-("Senoir Technical", 150000, 4),
+("Senior Technical", 150000, 4),
 ("Junior Technical", 125000, 4),
 ("HR Manager", 95000, 5),
 ("HR Admin", 80000, 5);
