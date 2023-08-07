@@ -40,13 +40,19 @@ Developers frequently have to create interfaces that allow non-developers to eas
 - View All Departments
 - View All Roles
 - View All Employees
-- View All Employees by Department
-- View All Employees by Role
-- View All Employees by Manager
+- View All Employees by Department (Bonus)
+- View All Employees by Role (Bonus)
+- View All Employees by Manager (Bonus)
 - Add Department
 - Add Role
 - Add Employee
 - Exit Menu
+
+## Future Development
+
+- Update employee managers
+- Delete departments, roles, and employees
+- View the total utilized budget of a department—in other words, the combined salaries of all employees in that department
 
 ## Installation
 
@@ -68,13 +74,11 @@ Developers frequently have to create interfaces that allow non-developers to eas
 
 ## Contributing
 
-N/A
+csetiawan88 - https://github.com/csetiawan88/
 
 ## Test
 
-```
 Testing is shown in the Walkthrough Video.
-```
 
 ## Walkthrough Video
 
