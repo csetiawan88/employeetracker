@@ -35,6 +35,19 @@ Developers frequently have to create interfaces that allow non-developers to eas
 - Uses the MySQL2 packageLinks to an external site. to connect to a MySQL database.
 - Follows the table schema outlined in the homework instructions.
 
+## Completed
+
+- View All Departments
+- View All Roles
+- View All Employees
+- View All Employees by Department
+- View All Employees by Role
+- View All Employees by Manager
+- Add Department
+- Add Role
+- Add Employee
+- Exit Menu
+
 ## Installation
 
 - This application requires Node.js, Inquirer, console.table and mysql2.
@@ -67,7 +80,7 @@ Testing is shown in the Walkthrough Video.
 
 Video created with Screencastify.
 
-Video Link:
+Video Link: https://drive.google.com/file/d/1iKZbIpriK2EbpNE5bZDJHudc4DH6cFQG/view
 
 ## Screenshot
 
