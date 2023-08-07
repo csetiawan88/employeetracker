@@ -47,6 +47,8 @@ Developers frequently have to create interfaces that allow non-developers to eas
 - Add Role
 - Add Employee
 - Exit Menu
+- Uses the Inquirer packageLinks to an external site = "inquirer": "^8.2.6",
+- Uses the MySQL2 packageLinks to an external site. to connect to a MySQL database = "mysql2": "^3.5.2"
 
 ## Future Development
 
@@ -100,11 +102,11 @@ Video Link: https://drive.google.com/file/d/1iKZbIpriK2EbpNE5bZDJHudc4DH6cFQG/vi
 - [npmjs](https://docs.npmjs.com/)
 - [inquirer](https://www.npmjs.com/package/inquirer)
 
+## Github
+
+GITHUB: https://github.com/csetiawan88/employeetracker
+
 ## Questions
 
 If you have any additional questions, you can reach me at:
 csetiawan@yahoo.com
-
-## Github
-
-GITHUB: https://github.com/csetiawan88/employeetracker
