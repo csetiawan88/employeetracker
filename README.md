@@ -69,7 +69,7 @@ Developers frequently have to create interfaces that allow non-developers to eas
 3. npm i inquirer
 4. npm i mysql2
 5. npm i console.table
-6. run `mysql -u root -p`.
+6. run `mysql -u root -p`. Enter your password.
 7. Make sure schema.sql and seeds.sql run
 8. run node index.js
 9. Follow the prompts
@@ -101,6 +101,7 @@ Video Link: https://drive.google.com/file/d/1iKZbIpriK2EbpNE5bZDJHudc4DH6cFQG/vi
 - [Node.js](https://nodejs.org/en/)
 - [npmjs](https://docs.npmjs.com/)
 - [inquirer](https://www.npmjs.com/package/inquirer)
+- Console Table
 
 ## Github
 
